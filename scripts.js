@@ -17,12 +17,15 @@ form.addEventListener('submit', (event) => {
 
   const dividendNum = parseInt(dividend, 10);
   const dividerNum = parseInt(divider, 10);
+  if (Number.isNaN(dividendNum) || Number.isNaN(dividerNum)) {
+    const criticalError = new Error(
+      'Something critical went wrong. Please reload the page',
+    );
+    console.error('Critical error:', criticalError.stack);
+    throw criticalError;
+  }
 
-  if (
-    Number.isNaN(dividendNum) ||
-    Number.isNaN(dividerNum) ||
-    dividerNum === 0
-  ) {
+  if (dividerNum === 0) {
     result.innerText =
       'Division not performed. Invalid number provided. Try again';
     console.error(
