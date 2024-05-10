@@ -38,6 +38,8 @@ form.addEventListener('submit', (event) => {
       'Something critical went wrong. Please reload the page',
     );
     console.error('Critical error:', criticalError.stack);
+    document.body.innerHTML =
+      '<h1>Something critical went wrong. Please reload the page</h1>';
     throw criticalError;
   }
 
